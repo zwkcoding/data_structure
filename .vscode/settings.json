@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "/home/zwk/software/miniconda3/envs/trajPlan/bin/python",
+    "cmake.configureOnOpen": true
+}
