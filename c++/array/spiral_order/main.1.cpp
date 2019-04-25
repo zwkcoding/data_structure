@@ -1,8 +1,8 @@
 /*
  * @Author: Zhou WenKai 
- * @Date: 2019-04-24 19:34:29 
+ * @Date: 2019-04-25 20:44:24 
  * @Last Modified by: Zhou WenKai
- * @Last Modified time: 2019-04-24 21:38:17
+ * @Last Modified time: 2019-04-25 20:51:46
  */
 
 #include "../../include/base.h"
@@ -37,37 +37,24 @@ auto __ = []() {
     return nullptr;
 }();
 
-/// Time Complexity: O(n)
-/// Space Complexity: O(1)
+// Template method
+/// Time Complexity: O()
+/// Space Complexity: O()
 class Solution
 {
 public:
-    int pivotIndex(vector<int> &nums)
+    vector<int> spiralOrder(vector<vector<int>> &matrix)
     {
-        const int n = nums.size();
-        if (n == 0) {
-            return -1;
-        }
+        vector<vector<int>> dirs{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+        vector<int> res;
+        int nr = matrix.size();
+        if (nr == 0)
+            return res;
+        int nc = matrix[0].size();
+        if (nc == 0)
+            return res;
 
-        int sum = 0;
-        for (int i = 0; i < n; i++) {
-            sum += nums[i];
-        }
-
-        int left_sum = 0;
-        for (int i = 0; i < n; i++) {
-            // int cur_index = i;
-            // for(int j = 0; j < i; j++)  {
-            //     left_sum += nums[j];
-            // }
-            int temp_sum = 2 * left_sum + nums[i];
-            if (temp_sum == sum) {
-                return i;
-            } else {
-                left_sum += nums[i];
-            }
-        }
-        return -1;
+        vector<int> nSteps{nc, nr - 1};
     }
 };
 
@@ -76,7 +63,7 @@ void test(ansType &expectAns, dataType1 &data, dataType2 K = dataType2())
 {
     Solution work;
     ansType ans;
-    ans = work.pivotIndex(data);
+    ans = work.spiralOrder(data);
 
     static int index = 0;
     index++;
@@ -95,15 +82,33 @@ void test(ansType &expectAns, dataType1 &data, dataType2 K = dataType2())
 
 int main()
 {
-    vector<int> data;
-    int expectAns;
+    vector<vector<int>> data;
+    vector<int> expectAns;
 
-    data = {1, 7, 3, 6, 5, 6};
-    expectAns = 3;
+    data = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}};
+    expectAns = {1, 2, 3, 6, 9, 8, 7, 4, 5};
     test(expectAns, data);
 
-    data = {1, 2, 3};
-    expectAns = -1;
+    data = {
+        {1, 2, 3, 4},
+        {5, 6, 7, 8},
+        {9, 10, 11, 12}};
+    expectAns = {1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7};
+    test(expectAns, data);
+
+    data = {
+        {1}};
+    expectAns = {1};
+    test(expectAns, data);
+
+    data = {
+        {1},
+        {4},
+        {7}};
+    expectAns = {1, 4, 7};
     test(expectAns, data);
 
     return 0;

@@ -1,19 +1,19 @@
+#include <algorithm>
 #include <bits/stdc++.h>
-#include<iostream>
-#include<cstdio>
-#include<cstring>
-#include<cstdlib>
-#include<vector>
-#include<string>
-#include<queue>
-#include<stack>
-#include<map>
-#include<set>
-#include<cmath>
-#include<algorithm>
-#include<functional>
-#include<stdarg.h>
-#include<time.h>
+#include <cmath>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <queue>
+#include <set>
+#include <stack>
+#include <stdarg.h>
+#include <string>
+#include <time.h>
+#include <vector>
 
 using namespace std;
 #ifdef __int64
@@ -23,7 +23,7 @@ typedef long long LL;
 #endif
 
 template <class T>
-using min_queue = priority_queue<T, vector<T>, greater<T> >;
+using min_queue = priority_queue<T, vector<T>, greater<T>>;
 
 template <class T>
 using max_queue = priority_queue<T>;
@@ -36,7 +36,11 @@ const int inf = 0x3f3f3f3f;
 typedef unsigned uint;
 typedef unsigned char uchar;
 const int null = 0;
-#define  myprintf(fmt,args...) do{if(debug)printf(fmt, ##args);}while(0)
+#define myprintf(fmt, args...)   \
+    do {                         \
+        if (debug)               \
+            printf(fmt, ##args); \
+    } while (0)
 //int dir[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
 
 /**
@@ -48,29 +52,31 @@ const int null = 0;
  * };
  */
 
-struct ListNode {
+struct ListNode
+{
     int val;
     ListNode *next;
-    ListNode(int x=0) : val(x), next(NULL) {}
+    ListNode(int x = 0) : val(x), next(NULL) {}
 };
 
-
-struct DoublyListNode {
+struct DoublyListNode
+{
     int val;
     DoublyListNode *next, *prev;
     DoublyListNode(int x) : val(x), next(NULL), prev(NULL) {}
 };
 
-ListNode* vecToList(vector<int>data, ListNode* root) {
+ListNode *vecToList(vector<int> data, ListNode *root)
+{
     int index = 0;
-    ListNode* pre = NULL;
-    for(auto it = data.begin(); it != data.end(); it++) {
+    ListNode *pre = NULL;
+    for (auto it = data.begin(); it != data.end(); it++) {
         int val = *it;
-        ListNode* now = root+index++;
+        ListNode *now = root + index++;
 
         now->val = val;
         now->next = NULL;
-        if(pre == NULL) {
+        if (pre == NULL) {
             pre = now;
         } else {
             pre->next = now;
@@ -80,13 +86,13 @@ ListNode* vecToList(vector<int>data, ListNode* root) {
     return root;
 }
 
-
-ListNode* vecToList(vector<int>data) {
-    ListNode* root = NULL;
-    ListNode* pre = NULL;
-    for(auto it = data.begin(); it != data.end(); it++) {
-        ListNode* now = new ListNode(*it);
-        if(pre == NULL) {
+ListNode *vecToList(vector<int> data)
+{
+    ListNode *root = NULL;
+    ListNode *pre = NULL;
+    for (auto it = data.begin(); it != data.end(); it++) {
+        ListNode *now = new ListNode(*it);
+        if (pre == NULL) {
             root = pre = now;
         } else {
             pre->next = now;
@@ -96,12 +102,11 @@ ListNode* vecToList(vector<int>data) {
     return root;
 }
 
-
-
-void output(ListNode* root) {
-    set<ListNode*> s;
-    while(root != nullptr) {
-        if(s.find(root) != s.end()) {
+void output(ListNode *root)
+{
+    set<ListNode *> s;
+    while (root != nullptr) {
+        if (s.find(root) != s.end()) {
             printf("[%d]", root->val);
             break;
         }
@@ -115,14 +120,16 @@ void output(ListNode* root) {
  * Definition for a binary tree node.
  */
 
-struct TreeNode {
+struct TreeNode
+{
     int val;
     TreeNode *left;
     TreeNode *right;
     TreeNode(int x = 0) : val(x), left(NULL), right(NULL) {}
 };
 
-enum {
+enum
+{
     NODE_LEFT = 0,
     NODE_RIGHT = 1,
     NODE_ROOT = -1,
@@ -174,27 +181,28 @@ enum {
 //    }
 //}
 
-TreeNode* vecToTree(vector<int> data) {
-    if(data.size() == 0) {
+TreeNode *vecToTree(vector<int> data)
+{
+    if (data.size() == 0) {
         return nullptr;
     }
 
-
-    TreeNode* root = new TreeNode(data[0]);;
-    queue<TreeNode*> que;
+    TreeNode *root = new TreeNode(data[0]);
+    ;
+    queue<TreeNode *> que;
     que.push(root);
 
-    for(int i=1; i<data.size();) {
-        TreeNode* preNode = que.front();
+    for (int i = 1; i < data.size();) {
+        TreeNode *preNode = que.front();
         que.pop();
 
-        if(preNode == nullptr) {
+        if (preNode == nullptr) {
             continue;
         }
 
         //left child
-        if(i<data.size()) {
-            if(data[i] > 0) {
+        if (i < data.size()) {
+            if (data[i] > 0) {
                 preNode->left = new TreeNode(data[i]);
                 que.push(preNode->left);
             } else {
@@ -204,8 +212,8 @@ TreeNode* vecToTree(vector<int> data) {
         }
 
         //right child
-        if(i<data.size()) {
-            if(data[i] > 0) {
+        if (i < data.size()) {
+            if (data[i] > 0) {
                 preNode->right = new TreeNode(data[i]);
                 que.push(preNode->right);
             } else {
@@ -218,23 +226,25 @@ TreeNode* vecToTree(vector<int> data) {
     return root;
 }
 
-
-int countTreeNode(TreeNode* root) {
-    if(root == nullptr) {
+int countTreeNode(TreeNode *root)
+{
+    if (root == nullptr) {
         return 0;
     }
     return 1 + countTreeNode(root->left) + countTreeNode(root->right);
 }
 
-int deepTreeNode(TreeNode* root) {
-    if(root == nullptr) {
+int deepTreeNode(TreeNode *root)
+{
+    if (root == nullptr) {
         return 0;
     }
-    return 1 + max(deepTreeNode(root->left),deepTreeNode(root->right));
+    return 1 + max(deepTreeNode(root->left), deepTreeNode(root->right));
 }
 
-void printbase(int val, int base) {
-    switch(base) {
+void printbase(int val, int base)
+{
+    switch (base) {
     case 1:
         printf("%1d", val);
         break;
@@ -255,8 +265,9 @@ void printbase(int val, int base) {
         break;
     }
 }
-void printbase(string val, int base) {
-    switch(base) {
+void printbase(string val, int base)
+{
+    switch (base) {
     case 1:
         printf("%1s", val.c_str());
         break;
@@ -278,38 +289,38 @@ void printbase(string val, int base) {
     }
 }
 
-void printfblank(int befotnum, int base) {
-    while(befotnum-- >0) {
+void printfblank(int befotnum, int base)
+{
+    while (befotnum-- > 0) {
         printbase("", base);
     }
 }
 
-
-
-void output(TreeNode* root) {
+void output(TreeNode *root)
+{
     int treeCount = countTreeNode(root);
     int deepCount = deepTreeNode(root);
-    queue<TreeNode*> que;
-    int lev=0;
+    queue<TreeNode *> que;
+    int lev = 0;
     int treenum = 0;
     int levnum = 0;
     int befotnum = 0;
     int betweenNum = 1;
     int base = 1;
 
-    for(int i=1; i<deepCount; i++) {
+    for (int i = 1; i < deepCount; i++) {
         befotnum = betweenNum;
-        betweenNum = betweenNum *2 + 1;
+        betweenNum = betweenNum * 2 + 1;
     }
 
     printf("\n[%2d] :", lev++);
     printfblank(befotnum, base);
 
     que.push(root);
-    while(!que.empty()) {
-        TreeNode* pre = que.front();
+    while (!que.empty()) {
+        TreeNode *pre = que.front();
         que.pop();
-        if(pre != nullptr) {
+        if (pre != nullptr) {
             que.push(pre->left);
             que.push(pre->right);
             printbase(pre->val, base);
@@ -321,12 +332,12 @@ void output(TreeNode* root) {
         }
         levnum++;
 
-        if(treenum >= treeCount) {
+        if (treenum >= treeCount) {
             break;
         }
 
         printfblank(betweenNum, base);
-        if((levnum & (levnum + 1)) == 0) {
+        if ((levnum & (levnum + 1)) == 0) {
             printf("\n[%2d] :", lev++);
             betweenNum = befotnum;
             befotnum = befotnum / 2;
@@ -336,59 +347,69 @@ void output(TreeNode* root) {
     printf("\n");
 }
 
-void output(bool data) {
-    printf("%s ", data?"true":"false");
+void output(bool data)
+{
+    printf("%s ", data ? "true" : "false");
 }
 
-void output(char data) {
+void output(char data)
+{
     printf("%c ", data);
 }
 
-void output(int data) {
+void output(int data)
+{
     printf("%5d ", data);
 }
 
-void output(long long data) {
+void output(long long data)
+{
     printf("%lld ", data);
 }
 
-void output(string& data) {
+void output(string &data)
+{
     printf("%s ", data.c_str());
 }
 
 template <class baseType>
-void output(vector<baseType>& vec) {
-    for(int i = 0; i < vec.size(); i++) {
+void output(vector<baseType> &vec)
+{
+    for (int i = 0; i < vec.size(); i++) {
         output(vec[i]);
     }
     //printf("\n");
 }
 
 template <class baseType>
-void output(vector<vector<baseType>>& matrix) {
-    for(int i = 0; i < matrix.size(); i++) {
+void output(vector<vector<baseType>> &matrix)
+{
+    for (int i = 0; i < matrix.size(); i++) {
         output(matrix[i]);
     }
     //printf("\n");
 }
 
 template <class baseType>
-void output(char const* name,baseType data) {
+void output(char const *name, baseType data)
+{
     printf("%s:", name);
     output(data);
     printf("\n");
 }
 template <class baseType>
-void output(char const* name,vector<baseType> data) {
+void output(char const *name, vector<baseType> data)
+{
     printf("%s size[%3d]:    ", name, data.size());
     output(data);
     printf("\n");
 }
 
 template <class vecType>
-void output(char const* name,vector<vector<vecType> > data) {
+void output(char const *name, vector<vector<vecType>> data)
+{
     printf("%s size[%4d]:\n", name, data.size());
-    for(int i=0; i<data.size(); i++) {
+    for (int i = 0; i < data.size(); i++) {
         printf("index[%3d] size[%d]", i, data[i].size());
         output(data[i]);
         printf("\n");
@@ -397,162 +418,164 @@ void output(char const* name,vector<vector<vecType> > data) {
 }
 
 template <class baseType>
-bool eq(baseType first, baseType second) {
+bool eq(baseType first, baseType second)
+{
     return first == second;
 }
 
 template <>
-bool eq(TreeNode* first, TreeNode* second) {
-    if(first == NULL && second == NULL) {
+bool eq(TreeNode *first, TreeNode *second)
+{
+    if (first == NULL && second == NULL) {
         return true;
     }
-    if(first == NULL || second == NULL) {
+    if (first == NULL || second == NULL) {
         return false;
     }
-    if(first->val != second->val) {
+    if (first->val != second->val) {
         return false;
     }
     return eq(first->left, second->left) && eq(first->right, second->right);
 }
 template <>
-bool eq(ListNode* first, ListNode* second) {
-    set<ListNode*> oneSet;
-    set<ListNode*> twoSet;
-    while(first && second && first->val == second->val) {
-        if(oneSet.find(first) != oneSet.end()) {
+bool eq(ListNode *first, ListNode *second)
+{
+    set<ListNode *> oneSet;
+    set<ListNode *> twoSet;
+    while (first && second && first->val == second->val) {
+        if (oneSet.find(first) != oneSet.end()) {
             break;
         }
         oneSet.insert(first);
-        if(twoSet.find(second) != twoSet.end()) {
+        if (twoSet.find(second) != twoSet.end()) {
             break;
         }
         twoSet.insert(second);
         first = first->next;
         second = second->next;
     }
-    if(first == NULL && second == NULL) {
+    if (first == NULL && second == NULL) {
         return true;
     }
-    if(first && second && first->val == second->val) {
+    if (first && second && first->val == second->val) {
         return true;
     }
     return false;
 }
 
-
 template <class baseType>
-bool eq(vector<baseType> first, vector<baseType> second) {
-    if(first.size() != second.size()) {
+bool eq(vector<baseType> first, vector<baseType> second)
+{
+    if (first.size() != second.size()) {
         return false;
     }
-    for(int i=0; i<first.size(); i++) {
-        if(!eq(first[i], second[i])) {
+    for (int i = 0; i < first.size(); i++) {
+        if (!eq(first[i], second[i])) {
             return false;
         }
     }
     return true;
 }
 
-
 template <class baseType>
-bool eq(vector<vector<baseType>> first, vector<vector<baseType>> second) {
-    if(first.size() != second.size()) {
+bool eq(vector<vector<baseType>> first, vector<vector<baseType>> second)
+{
+    if (first.size() != second.size()) {
         return false;
     }
-    for(int i=0; i<first.size(); i++) {
-        if(!eq(first[i], second[i])) {
+    for (int i = 0; i < first.size(); i++) {
+        if (!eq(first[i], second[i])) {
             return false;
         }
     }
     return true;
 }
-int getIndex() {
+int getIndex()
+{
     static int index = 0;
     return index++;
 }
 
-#define TEST_SMP1(ClassName, FunNAme, expectAns, firstData)\
-do{\
-    ClassName work;\
-    auto tmpFirstData = firstData;\
-    auto ans = work.FunNAme(tmpFirstData);\
-    int index = getIndex();\
-    bool check = eq(ans, expectAns);\
-    if(!check) {\
-        printf("index %d: NO\n", index);\
-        output("firstData", firstData);\
-        output("ans", ans);\
-        output("expectAns", expectAns);\
-    } else {\
-        printf("index %d: YES\n", index);\
-    }\
-    printf("\n");\
-}while(0)
+#define TEST_SMP1(ClassName, FunNAme, expectAns, firstData) \
+    do {                                                    \
+        ClassName work;                                     \
+        auto tmpFirstData = firstData;                      \
+        auto ans = work.FunNAme(tmpFirstData);              \
+        int index = getIndex();                             \
+        bool check = eq(ans, expectAns);                    \
+        if (!check) {                                       \
+            printf("index %d: NO\n", index);                \
+            output("firstData", firstData);                 \
+            output("ans", ans);                             \
+            output("expectAns", expectAns);                 \
+        } else {                                            \
+            printf("index %d: YES\n", index);               \
+        }                                                   \
+        printf("\n");                                       \
+    } while (0)
 
+#define TEST_SMP2(ClassName, FunNAme, expectAns, firstData, secondData) \
+    do {                                                                \
+        ClassName work;                                                 \
+        auto tmpFirstData = firstData;                                  \
+        auto tmpSecondData = secondData;                                \
+        auto ans = work.FunNAme(tmpFirstData, tmpSecondData);           \
+        int index = getIndex();                                         \
+        bool check = eq(ans, expectAns);                                \
+        if (!check) {                                                   \
+            printf("index %d: NO\n", index);                            \
+            output("firstData", firstData);                             \
+            output("secondData", secondData);                           \
+            output("ans", ans);                                         \
+            output("expectAns", expectAns);                             \
+        } else {                                                        \
+            printf("index %d: YES\n", index);                           \
+        }                                                               \
+        printf("\n");                                                   \
+    } while (0)
 
-#define TEST_SMP2(ClassName, FunNAme, expectAns, firstData, secondData)\
-do{\
-    ClassName work;\
-    auto tmpFirstData = firstData;\
-    auto tmpSecondData = secondData;\
-    auto ans = work.FunNAme(tmpFirstData, tmpSecondData);\
-    int index = getIndex();\
-    bool check = eq(ans, expectAns);\
-    if(!check) {\
-        printf("index %d: NO\n", index);\
-        output("firstData", firstData);\
-        output("secondData", secondData);\
-        output("ans", ans);\
-        output("expectAns", expectAns);\
-    } else {\
-        printf("index %d: YES\n", index);\
-    }\
-    printf("\n");\
-}while(0)
+#define TEST_SMP3(ClassName, FunNAme, expectAns, firstData, secondData, thirdData) \
+    do {                                                                           \
+        ClassName work;                                                            \
+        auto tmpFirstData = firstData;                                             \
+        auto tmpSecondData = secondData;                                           \
+        auto tmpThirdData = thirdData;                                             \
+        auto ans = work.FunNAme(tmpFirstData, tmpSecondData, tmpThirdData);        \
+        int index = getIndex();                                                    \
+        bool check = eq(ans, expectAns);                                           \
+        if (!check) {                                                              \
+            printf("index %d: NO\n", index);                                       \
+            output("firstData", firstData);                                        \
+            output("secondData", secondData);                                      \
+            output("thirdData", thirdData);                                        \
+            output("ans", ans);                                                    \
+            output("expectAns", expectAns);                                        \
+        } else {                                                                   \
+            printf("index %d: YES\n", index);                                      \
+        }                                                                          \
+        printf("\n");                                                              \
+    } while (0)
 
-
-#define TEST_SMP3(ClassName, FunNAme, expectAns, firstData, secondData, thirdData)\
-do{\
-    ClassName work;\
-    auto tmpFirstData = firstData;\
-    auto tmpSecondData = secondData;\
-    auto tmpThirdData = thirdData;\
-    auto ans = work.FunNAme(tmpFirstData, tmpSecondData, tmpThirdData);\
-    int index = getIndex();\
-    bool check = eq(ans, expectAns);\
-    if(!check) {\
-        printf("index %d: NO\n", index);\
-        output("firstData", firstData);\
-        output("secondData", secondData);\
-        output("thirdData", thirdData);\
-        output("ans", ans);\
-        output("expectAns", expectAns);\
-    } else {\
-        printf("index %d: YES\n", index);\
-    }\
-    printf("\n");\
-}while(0)
-
-#define TEST_SMP4(ClassName, FunNAme, expectAns, firstData, secondData, thirdData, fouthData)\
-do{\
-    ClassName work;\
-    auto tmpFirstData = firstData;\
-    auto tmpSecondData = secondData;\
-    auto tmpThirdData = thirdData;\
-    auto tmpFouthData = fouthData;\
-    auto ans = work.FunNAme(tmpFirstData, tmpSecondData, tmpThirdData,tmpFouthData);\
-    int index = getIndex();\
-    bool check = eq(ans, expectAns);\
-    if(!check) {\
-        printf("index %d: NO\n", index);\
-        output("firstData", firstData);\
-        output("secondData", secondData);\
-        output("thirdData", thirdData);\
-        output("fouthData", fouthData);\
-        output("ans", ans);\
-        output("expectAns", expectAns);\
-    } else {\
-        printf("index %d: YES\n", index);\
-    }\
-    printf("\n");\
-}while(0)
+#define TEST_SMP4(ClassName, FunNAme, expectAns, firstData, secondData, thirdData, fouthData) \
+    do {                                                                                      \
+        ClassName work;                                                                       \
+        auto tmpFirstData = firstData;                                                        \
+        auto tmpSecondData = secondData;                                                      \
+        auto tmpThirdData = thirdData;                                                        \
+        auto tmpFouthData = fouthData;                                                        \
+        auto ans = work.FunNAme(tmpFirstData, tmpSecondData, tmpThirdData, tmpFouthData);     \
+        int index = getIndex();                                                               \
+        bool check = eq(ans, expectAns);                                                      \
+        if (!check) {                                                                         \
+            printf("index %d: NO\n", index);                                                  \
+            output("firstData", firstData);                                                   \
+            output("secondData", secondData);                                                 \
+            output("thirdData", thirdData);                                                   \
+            output("fouthData", fouthData);                                                   \
+            output("ans", ans);                                                               \
+            output("expectAns", expectAns);                                                   \
+        } else {                                                                              \
+            printf("index %d: YES\n", index);                                                 \
+        }                                                                                     \
+        printf("\n");                                                                         \
+    } while (0)
