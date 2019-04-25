@@ -2,7 +2,7 @@
  * @Author: Zhou WenKai 
  * @Date: 2019-04-25 20:44:24 
  * @Last Modified by: Zhou WenKai
- * @Last Modified time: 2019-04-25 20:51:46
+ * @Last Modified time: 2019-04-25 22:20:05
  */
 
 #include "../../include/base.h"
@@ -38,13 +38,14 @@ auto __ = []() {
 }();
 
 // Template method
-/// Time Complexity: O()
-/// Space Complexity: O()
+/// Time Complexity: O((max(m,n))^2)
+/// Space Complexity: O(m*n)
 class Solution
 {
 public:
     vector<int> spiralOrder(vector<vector<int>> &matrix)
     {
+        // postion index tranfer templated
         vector<vector<int>> dirs{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
         vector<int> res;
         int nr = matrix.size();
@@ -53,8 +54,22 @@ public:
         int nc = matrix[0].size();
         if (nc == 0)
             return res;
-
+        
+        // curent direction flag/templates
+        int cur_dir = 0;
+        // horozontal or vertical arrays/templates
         vector<int> nSteps{nc, nr - 1};
+        int x = 0, y = -1;
+        while(nSteps[cur_dir % 2])  {
+            for(int i = 0; i < nSteps[cur_dir % 2]; i++)  {
+                x += dirs[cur_dir][0];
+                y += dirs[cur_dir][1];
+                res.push_back(matrix[x][y]);
+            }
+            nSteps[ cur_dir % 2]--;
+            cur_dir = (cur_dir + 1) % 4;
+        }
+        return res;
     }
 };
 
