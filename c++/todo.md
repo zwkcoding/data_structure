@@ -1,0 +1,2 @@
+- use one cmakelist in project root  dir
+- 
