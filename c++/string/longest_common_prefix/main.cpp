@@ -2,7 +2,7 @@
  * @Author: Zhou WenKai 
  * @Date: 2019-04-27 12:36:38 
  * @Last Modified by: Zhou WenKai
- * @Last Modified time: 2019-04-27 13:17:01
+ * @Last Modified time: 2019-04-27 13:21:13
  */
 
 #include "../../include/base.h"
@@ -55,7 +55,7 @@ public:
         }
 
         int res_len = min_len;
-        for(int i = 0; i < strs.size(); i++)  {
+        for(int i = 1; i < strs.size(); i++)  {
             for(int j = 0; j < min_len; j++)  {
                 if(strs[i][j] != first[j])  {
                     res_len = j;
