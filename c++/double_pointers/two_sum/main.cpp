@@ -1,8 +1,8 @@
 /*
  * @Author: Zhou WenKai 
- * @Date: 2019-04-27 19:46:03 
+ * @Date: 2019-04-27 20:06:48 
  * @Last Modified by: Zhou WenKai
- * @Last Modified time: 2019-04-27 20:05:17
+ * @Last Modified time: 2019-04-27 20:13:47
  */
 
 #include<cstdio>
@@ -43,20 +43,18 @@ auto __ =[]() {
 class Solution {
 public:
     vector<int> twoSum(vector<int>& numbers, int target) {
-        int left = 0, right = numbers.size() - 1, sum = 0;
-        vector<int> ans;
-        while(left < right)  {
-            int temp = numbers[left] + numbers[right];
-            if(temp < target)  {
-                left++;
-            } else if(temp > target)  {
-                right--;
+         unordered_map<int,int> record;
+        vector<int> result;
+        for(int i = 0; i < numbers.size(); i++)  {
+            if(record.find(numbers[i]) == record.end())  {
+                record[target - numbers[i]] = i;
             } else {
-                ans.push_back(left + 1);
-                ans.push_back(right + 1);
-                return ans;
+                result.push_back(record[numbers[i]]);
+                result.push_back(i);
+                return result;
             }
         }
+        return result;
     }
 };
 
@@ -89,14 +87,14 @@ int main() {
     vector<int> expectAns;
 
 
-    first = {2,7,11,15};
+    first = {7,11,2,15};
     second = 9;
-    expectAns = {1,2};
+    expectAns = {0,2};
     test(expectAns, first, second);
 
     first = {2,7,11,15};
     second =17;
-    expectAns = {1,4};
+    expectAns = {0,3};
     test(expectAns, first, second);
 
 
