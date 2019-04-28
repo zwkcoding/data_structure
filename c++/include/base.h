@@ -347,9 +347,14 @@ void output(TreeNode *root)
     printf("\n");
 }
 
+
 void output(bool data)
 {
     printf("%s ", data ? "true" : "false");
+}
+
+void output(double data) {
+  printf("%f ", data);
 }
 
 void output(char data)
