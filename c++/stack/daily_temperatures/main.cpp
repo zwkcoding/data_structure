@@ -1,8 +1,7 @@
 #include "../../include/base.h"
 
-/// 
-/// Time Complexity: O()
-/// Space Complexity: O()
+/// Time Complexity: O(n)
+/// Space Complexity: O(n)
 class Solution {
 public:
     vector<int> dailyTemperatures(vector<int>& T) {
