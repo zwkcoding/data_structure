@@ -69,6 +69,11 @@ int main() {
     expectAns = -1;
     TEST_SMP2(Solution, FUNCTION, expectAns, first, second);
 
+    first = {6,7,0,1,2,4,5};
+    second = 6;
+    expectAns = 0;
+    TEST_SMP2(Solution, FUNCTION, expectAns, first, second);
+
     first = {7,0,1,2,4,5,6};
     second = 5;
     expectAns = 5;
