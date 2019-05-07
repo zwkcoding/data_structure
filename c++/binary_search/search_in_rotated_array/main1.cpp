@@ -8,6 +8,9 @@ public:
         }
         int left = 0, right = nums.size()-1;
         // nums value like: k, k+1, ... , MAX,  1, 2, ..., k-1
+        // find the index of the smallest value using binary search.
+        // Loop will terminate since mid < hi, and lo or hi will shrink by at least 1.
+        // Proof by contradiction that mid < hi: if mid==hi, then lo==hi and loop would have been terminated.
         while(left < right){
             int mid=(left + right)/2;
             if(nums[mid]>nums[right]) left=mid+1;
