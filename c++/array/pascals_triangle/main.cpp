@@ -38,7 +38,6 @@ auto __ = []() {
     return nullptr;
 }();
 
-// Template method
 /// Time Complexity: O(n^2)
 /// Space Complexity: O(n^2)
 class Solution
