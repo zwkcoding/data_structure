@@ -1,1 +1,4 @@
 *.json
+.idea/
+# CMake
+cmake-build-*/
