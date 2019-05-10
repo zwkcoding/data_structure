@@ -350,6 +350,7 @@ void output(TreeNode *root)
 
 void output(bool data)
 {
+    // std::cout << std::boolalpha << data << std::endl;
     printf("%s ", data ? "true" : "false");
 }
 

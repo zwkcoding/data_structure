@@ -1,4 +1,7 @@
 {
     "python.pythonPath": "/home/zwk/software/miniconda3/envs/trajPlan/bin/python",
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "files.associations": {
+        "ostream": "cpp"
+    }
 }
