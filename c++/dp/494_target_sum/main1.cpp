@@ -39,7 +39,7 @@ There are 3 ways to assign symbols to make the sum of nums be target 5.
 #include <array>
 
 /// Recursion with memoization
-/// Time Complexity:  O(l*n) The memomemo array of size l*n has been filled just once. Here, l refers to the range of sumsum and n refers to the size of numsnums array.
+/// Time Complexity:  O(l*n) The memomemo array of size l*n has been filled just once. Here, l refers to the range of sum and n refers to the size of nums array.
 /// Space Complexity: O(n). The depth of the recursion tree can go upto n
 
 /*
@@ -49,7 +49,7 @@ A call to find() with the same start index and target sum can be made multiple t
 class Solution {
 private:
     int find(int p, vector<int>& nums, int sum, vector<unordered_map<int,int>>& mem) {
-        // find sum = s, equal to : sum -s = 0
+        // find sum = s, equal to : (+-)sum (+-) s = 0
         if(p==nums.size()) return sum == 0;
         auto it = mem[p].find(sum);
         if(it != mem[p].end()) return it->second;
@@ -77,6 +77,22 @@ public:
         return dp[nums.size() ][S];
       }
       */
+
+  int findTargetSumWays(vector<int>& nums, int S) {
+        int n = nums.size();
+        vector<int> dp(S+1);
+        dp[0]=1;
+        // nums里面有多少种可以组成target的方式
+        // 使用一维数组可以有效节省空间
+        for(int i = 0; i < nums.size(); i++)  {
+               for (int j = S; j >= nums[i]; j--) {
+                    dp[j] += dp[j - nums[i]];
+            }
+        }
+        return dp[S];
+    }
+
+
 };
 
 
