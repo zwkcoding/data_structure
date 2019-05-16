@@ -23,30 +23,35 @@ public:
 };
 
 
+// common method
+class Solution {
+    
 public:
-    int kthSmallest(TreeNode* root, int k) {
+     int kthSmallest(TreeNode* root, int k) {
         stack<TreeNode*> stk;
-        TreeNode* p = root->left;
+        TreeNode* p = root;
         // push all left node
         while(p)  {
             stk.push(p);
             p = p->left;
         }
         
-        TreeNode* tmp;
         while(k)  {
-            tmp = stk.top();
-            if(tmp->right)  {
+        TreeNode* tmp = stk.top();
+        stk.pop();    // pop the current min node
+        k--;
+        if(k==0) return tmp->val;
+        // delete min node sequencently
+        if(tmp->right != NULL)  {
+            // push all left node of right subtree
+            tmp = tmp->right;  
+            while(tmp)  {
+                stk.push(tmp);
                 tmp = tmp->left;
-                // push all left node of right subtree
-                while(tmp)  {
-                    stk.push(tmp);
-                    tmp = tmp->left;
-                }
             }
-            stk.pop();    // pop the current min node
-            k--;
         }
-        return stk.top()->val;
+       
+        }
+        return -1;
     }
 };
