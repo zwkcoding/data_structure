@@ -53,7 +53,7 @@ public:
        row_n.push_back(1);
        res.push_back(row_n);
 
-      // f(x, y) = f(x-1, y -1) + f(x-1, y)
+      // f(x, y) = f(x-1, y-1) + f(x-1, y)
       for(int i = 1; i < num_rows; i++)  {
           vector<int> row_temp;
           row_temp.push_back(1);
@@ -67,6 +67,21 @@ public:
       return res;
        
     }
+
+/*  // https://leetcode.com/explore/learn/card/array-and-string/202/introduction-to-2d-array/1170/discuss/38171/Maybe-shortest-c++-solution
+     vector<vector<int>> generate(int numRows) {
+        vector<vector<int> > ans(numRows);
+        for(int i = 1; i <= numRows; i++)  {
+            ans[i-1].resize(i);
+            ans[i-1][0] = ans[i-1][i-1] = 1;
+            
+            for(int j = 1; j < i - 1; j++)  {
+                ans[i-1][j] = ans[i-2][j-1] + ans[i-2][j];
+            }
+        }
+        return ans;
+        
+    } */
 };
 
 template <class ansType, class dataType1, class dataType2 = int>
