@@ -76,6 +76,21 @@ public:
         
     }
 
+        /* string addBinary(string a, string b) {
+        int  adi = a.size() - 1, bdi = b.size() - 1;
+        string ans = "";
+        int ach, bch;
+        int ret = 0;
+        while(adi >= 0 || bdi >= 0)  {
+            ach = (adi >=0 && a[adi--] == '1');
+            bch = (bdi >=0 && b[bdi--] == '1');
+            ans = static_cast<char>(((ach + bch + ret) & 0x1) + '0' ) + ans;
+            ret = (ach + bch + ret) >= 2;   // 判断是否进位， 可用 >>1 代替
+        }
+        if(ret == 1) ans = static_cast<char>('1') + ans;
+        return ans;
+    } */
+
 };
 
 template <class ansType, class dataType1, class dataType2 = int>
