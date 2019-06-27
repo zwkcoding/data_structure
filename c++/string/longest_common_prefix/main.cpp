@@ -66,6 +66,24 @@ public:
         return first.substr(0, res_len);
     }
 
+    /* string longestCommonPrefix(vector<string>& strs) {
+        string ans = "";
+        if(strs.size() == 0) return ans;
+        const string& res = strs[0];
+        
+        int prefix_length = strs[0].size();
+        for(int i = 0; i < strs[0].size(); i++)  {
+            for(int j = 0; j < strs.size(); j++)  {
+                // dismatch or shorten than first strings
+                if(strs[0][i] != strs[j][i] || strs[j].size() <= i)  {
+                    prefix_length = i;
+                    return res.substr(0, prefix_length);
+                }
+            }
+        }
+        return res.substr(0, prefix_length);
+    } */
+
 };
 
 template <class ansType, class dataType1, class dataType2 = int>
