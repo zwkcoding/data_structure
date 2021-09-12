@@ -23,3 +23,8 @@
 - [算法珠玑](https://soulmachine.gitbooks.io/algorithm-essentials/java/)
 - [AlgoCasts 用心做好每一个算法视频](https://algocasts.io)
 - [awesome-golang-leetcode](https://github.com/kylesliu/awesome-golang-leetcode)
+- [wangzheng0822/algo: 数据结构和算法必知必会的50个代码实现](https://github.com/wangzheng0822/algo)
+- [tiankonguse/leetcode-solutions: My Solutions to Leetcode problems ! leetcode 算法题源代码 & Leetcode 互动编程项目](https://github.com/tiankonguse/leetcode-solutions)
+
+## My other record repo
+- [Issues · zwkcoding/100Days-Of-Leetcode](https://github.com/zwkcoding/100Days-Of-Leetcode/issues?page=2&q=is%3Aissue+is%3Aopen)

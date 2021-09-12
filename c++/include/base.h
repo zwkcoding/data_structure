@@ -378,6 +378,17 @@ void output(string &data)
     printf("%s ", data.c_str());
 }
 
+typedef struct
+{
+    float x;
+    float y;
+} Point;
+
+void output(Point &data)
+{
+    printf("[%.3f, %.3f] ", data.x, data.y);
+}
+
 template <class baseType>
 void output(vector<baseType> &vec)
 {
