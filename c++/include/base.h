@@ -596,3 +596,12 @@ int getIndex()
         }                                                                                     \
         printf("\n");                                                                         \
     } while (0)
+
+// 输入 n，打印 n 个 tab 缩进
+void printIndent(int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        printf("   ");
+    }
+}

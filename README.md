@@ -13,16 +13,13 @@
 - [剑指 Offer 题解](https://github.com/gatieme/CodingInterviews)
 - https://github.com/liuchuo/LeetCode
 - [公瑾的Github](https://github.com/yuzhoujr/leetcode)
-- [shejie1993](https://shenjie1993.gitbooks.io/leetcode-python/content/096%20Unique%20Binary%20Search%20Trees.html)
+- [shejie1993](https://shenjie1993.gitbooks.io/leetcode-python/content/): leetcode python3 版本
+- [介紹 | 编程之法：面试和算法心得](https://wizardforcel.gitbooks.io/the-art-of-programming-by-july/content/index.html) leetcode 题解
 - [算法/NLP/深度学习/机器学习面试笔记](https://github.com/imhuay/Interview_Notes-Chinese)
 - [CS-Notes](https://github.com/CyC2018/CS-Notes)
 - [OI Wiki](https://oi-wiki.org)
-- [leetcode-in-go](https://github.com/aQuaYi/LeetCode-in-Go#leetcode-%E7%9A%84-go-%E8%A7%A3%E7%AD%94)
-- [Algorithm Archive](https://github.com/algorithm-archivists/algorithm-archive)
-- [Grokking the System Design Interview](https://www.educative.io/collection/5668639101419520/5649050225344512)
-- [算法珠玑](https://soulmachine.gitbooks.io/algorithm-essentials/java/)
-- [AlgoCasts 用心做好每一个算法视频](https://algocasts.io)
-- [awesome-golang-leetcode](https://github.com/kylesliu/awesome-golang-leetcode)
+- [Algorithm Archive](https://www.algorithm-archive.org/)
+- [算法珠玑](https://soulmachine.gitbooks.io/algorithm-essentials/java/): leetcode 题库
 - [wangzheng0822/algo: 数据结构和算法必知必会的50个代码实现](https://github.com/wangzheng0822/algo)
 - [tiankonguse/leetcode-solutions: My Solutions to Leetcode problems ! leetcode 算法题源代码 & Leetcode 互动编程项目](https://github.com/tiankonguse/leetcode-solutions)
 
