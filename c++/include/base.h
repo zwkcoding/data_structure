@@ -4,6 +4,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <cinttypes>
 #include <functional>
 #include <iostream>
 #include <map>
@@ -417,7 +418,7 @@ void output(char const *name, baseType data)
 template <class baseType>
 void output(char const *name, vector<baseType> data)
 {
-    printf("%s size[%3d]:    ", name, data.size());
+    printf("%s size[%" PRIu64 "]:    ", name, data.size());
     output(data);
     printf("\n");
 }
