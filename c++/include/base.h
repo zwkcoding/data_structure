@@ -426,9 +426,9 @@ void output(char const *name, vector<baseType> data)
 template <class vecType>
 void output(char const *name, vector<vector<vecType>> data)
 {
-    printf("%s size[%4d]:\n", name, data.size());
+    printf("%s size[%" PRIu64 "]:\n", name, data.size());
     for (int i = 0; i < data.size(); i++) {
-        printf("index[%3d] size[%d]", i, data[i].size());
+        printf("index[%3d] size[%" PRIu64 "]", i, data[i].size());
         output(data[i]);
         printf("\n");
     }
