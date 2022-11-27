@@ -18,6 +18,9 @@
 - [liuwentao1992/leetcode-note C++版)](https://github.com/liuwentao1992/leetcode-note)
 - [CS-Notes](https://github.com/CyC2018/CS-Notes)
 
+课程类：
+- [cs106b](http://web.stanford.edu/class/cs106b/)
+
 其他：
 
 - [结构化算法刷题训练指南](https://xiaozhuanlan.com/Lisanaaa)(希望大家支持一下！)
